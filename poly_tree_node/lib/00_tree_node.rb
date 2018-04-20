@@ -2,7 +2,6 @@ require 'byebug'
 
 class PolyTreeNode
   attr_reader :parent, :value
-  # debugger
   def initialize(value)
     @value = value
     @parent = nil
@@ -44,6 +43,11 @@ class PolyTreeNode
   end
 
   def bfs(target_value)
+    queue = [self]
+    until queue.empty?
+      shifted_node = queue.shift
+      return shifted_node if shifted_node.value == target_value
+      queue.concat(shifted_node.children)
+    end
   end
-
 end
