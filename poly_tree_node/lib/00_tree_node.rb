@@ -24,4 +24,13 @@ class PolyTreeNode
     self.parent.children << self unless self.parent.nil?
   end
 
+  def add_child(child_node)
+    child_node.parent=(self)
+  end
+
+  def remove_child(child_node)
+    raise "This node isn't a child!" if child_node.parent.nil?
+    child_node.parent=(nil)
+  end
+
 end
